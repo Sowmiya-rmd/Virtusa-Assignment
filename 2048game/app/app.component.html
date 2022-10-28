@@ -1,0 +1,55 @@
+<style>
+  .grid-container {
+    background-color: lightblue;
+    width: 50%;
+    border: 1;
+  }
+
+  .grid-container>thead>tr>th {
+    text-align: center;
+    font-weight: bolder;
+    color: red;
+    font-size: 50px;
+  }
+
+  .grid-container>thead>tr>th>span {
+    color: red;
+  }
+
+  .grid-container>tbody>tr>td {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid darkblue;
+    text-align: center;
+    font-size: 30px;
+    height: 70px;
+    width: 50px;
+  }
+
+  .title-content {
+    font-weight: bolder;
+    font-size: 39px;
+    background-color: pink;
+    text-align: center;
+    padding: 2%;
+  }
+</style>
+<div class="title-content">
+  <div style="color: mediumvioletred;">NJan Channel</div>
+  2048 Game
+</div>
+<div style="height: 600px;background-color:pink;padding: 1%;" (window:keydown)="arrowMove($event)">
+  <table class="grid-container">
+    <thead>
+      <tr>
+        <th colspan="4">
+          score:{{score}} <span *ngIf="gameOver">Game over</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of gridMatrix">
+        <td *ngFor="let index of row" [ngStyle]="{'background-color':bindColor(index)}">{{index}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
